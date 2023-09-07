@@ -2,6 +2,7 @@
 const express = require('express');
 const { createServer } = require('http');
 const socketio = require('socket.io');
+const cors = require('cors');
 const Sockets = require('./sockets');
 
 
@@ -16,12 +17,18 @@ class Server {
         this.server = new createServer( this.app )
 
         //Configuraciones sockets
-        this.io = socketio( this.server, {/* Confifuraciones */ } );
+        this.io = socketio( this.server, {
+            origin: "*",
+            methods: ["GET", "POST"]
+        } );
     }
 
     middlewares() {
         //Desplegar carpeta estatica public
         this.app.use( express.static('public') )
+
+        //CORS
+        this.app.use( cors() ); // esto solo funciona para el server
     }
 
     //Configurar sockets
