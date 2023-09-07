@@ -1,5 +1,5 @@
 //Referencia conexion al sokcets
-const socket =  io('http://localhost:8080' || 'https://socketio-server-basic-production.up.railway.app/'); // socket del cliente y el otro es el socket del servidor
+const socket =  io('https://socketio-server-basic-production.up.railway.app/'); // socket del cliente y el otro es el socket del servidor, 'http://localhost:8080'
 //Referencias HTLM
 const formulario = document.querySelector('#miFormulario');
 const mensajes = document.querySelector('#misMensajes');
